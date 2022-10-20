@@ -78,7 +78,7 @@ Mat4 Mat4::generateRotZ(float theta){
 
 Mat4 Mat4::multiply4DH(Mat4 TrZ, Mat4 RtZ, Mat4 RtX, Mat4 TrX){
     Mat4 c = Mat4();
-    c.write(TrZ).multiply(RtZ).multiply(RtX).multiply(TrX);
+    c.write(TrZ.multiply(RtZ).multiply(RtX).multiply(TrX));
     this->write(c);
     return c;
 }
