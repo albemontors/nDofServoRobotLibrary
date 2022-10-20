@@ -94,7 +94,7 @@ class Mat4 {
         * @param row number [0-3]
         * @param column number [0-3]
         * @param value to write
-        * @return this
+        * @return cell content
         */
         Mat4 writeCell(uint8_t row, uint8_t column, float value);
         /**
