@@ -22,21 +22,22 @@ Library for control of servo motors robotic systems
 class Mat4 {
     public:
         Mat4();
-        GenerateRotX();
-        GenerateRotZ();
-        GenerateTrnX();
-        GenerateTrnZ();
-        multiply(Mat4 b);
+        Mat4(float** b);
+        Mat4 write(Mat4 b);                                  
+        Mat4 multiply(Mat4 b);
+        Mat4 generateIdentity();                           
+        Mat4 generateTrnX(float val);                                        //generate translation along X
+        Mat4 generateTrnZ(float val);                                        //generate translation along Z         
+        Mat4 generateRotX(float theta);                                        //generate rotation around X
+        Mat4 generateRotZ(float theta);                                       //generate rotation around Z
+        Mat4 multiply4DH(Mat4 TrZ, Mat4 RtZ, Mat4 RtX, Mat4 TrX);
+        float readCell(uint8_t row, uint8_t column);
+        Mat4 writeCell(uint8_t row, uint8_t column, float value);
+        Mat4 verbose();
+
     private:
         float a[4][4];
 };
-
-class DHmat {
-    public:
-        DHmat();
-    private:
-        Mat4 dh;
-}
 
 class Servo {
 
@@ -69,7 +70,8 @@ class Link{
         float alpha;
         float a;
         float d;
-        DHmat dh;
+        Mat4 dh;
+        float theta;
 
 };
 
